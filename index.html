@@ -6,9 +6,24 @@ hello
 
 <p>
 page.url: {{ page.url }}
+
+<p>
 page.title: {{ page.url }}
 
 <p>
+site.static_files:<br>
 {% for url in site.static_files %}
-<li><a href="{{ site.baseurl | escape }}{{ url.path | escape }}">{{ url.path | escape }}</a> </li>
+<li><a href="{{ site.baseurl | escape }}{{ url.path | escape }}">{{ url.path | escape }} - basename={{ url.basename }} - extname={{ url.extname }}</a> </li>
+{% endfor %}
+
+<p>
+site.collections<br>
+{% for coll in site.collections %}
+<li>{{ coll }}</li>
+{% endfor %}
+
+<p>
+site.documents<br>
+{% for doc in site.documents %}
+<li>{{ doc }}</li>
 {% endfor %}
