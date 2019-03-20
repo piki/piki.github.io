@@ -2,6 +2,7 @@
 layout: default
 ---
 
+<pre>
 hello
 
 <p>
@@ -10,20 +11,18 @@ page.url: {{ page.url }}
 <p>
 page.title: {{ page.url }}
 
+{% assign subdirs = site.static_files | map: "path" | group_by_exp: "path", "path | split: '/' | pop | join: '/'" | map: "name" %}
+
+subdirs: {{ subdirs | join ", " }}
+
+<p>
+{% for dir in subdirs %}
+<li><a href="{{ site.baseurl | escape}}{{ dir | escape}}">{{ dir | escape}}</a></li>
+{% endfor %}
+
 <p>
 site.static_files:<br>
 {% for url in site.static_files %}
 <li><a href="{{ site.baseurl | escape }}{{ url.path | escape }}">{{ url.path | escape }}</a> - basename={{ url.basename }} - extname={{ url.extname }} - dir={{ url.dir }} </li>
 {% endfor %}
-
-<p>
-site.collections<br>
-{% for coll in site.collections %}
-<li>{{ coll }}</li>
-{% endfor %}
-
-<p>
-site.documents<br>
-{% for doc in site.documents %}
-<li>{{ doc }}</li>
-{% endfor %}
+</pre>
