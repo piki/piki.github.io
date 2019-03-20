@@ -13,7 +13,7 @@ page.title: {{ page.url }}
 <p>
 site.static_files:<br>
 {% for url in site.static_files %}
-<li><a href="{{ site.baseurl | escape }}{{ url.path | escape }}">{{ url.path | escape }} - basename={{ url.basename }} - extname={{ url.extname }}</a> </li>
+<li><a href="{{ site.baseurl | escape }}{{ url.path | escape }}">{{ url.path | escape }}</a> - basename={{ url.basename }} - extname={{ url.extname }} - dir={{ url.dir }} </li>
 {% endfor %}
 
 <p>
